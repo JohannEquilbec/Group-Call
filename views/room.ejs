@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,22 +11,115 @@
   <script defer src="https://unpkg.com/peerjs@1.2.0/dist/peerjs.min.js"></script>
   <script src="/socket.io/socket.io.js" defer></script>
   <script src="script.js" defer></script>
-  <title>Document</title>
+  <title> Video Call </title>
   <style>
     #video-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, 300px);
       grid-auto-rows: 300px;
     }
-    
+
     video {
+      width: 300px;
+      height: 300px;
+      border: 2px solid green;
+      object-fit: cover;
+      position: absolute;
+      top: 30%;
+      left: 50%;
+      margin: -150px 0 0 -150px;
+    }
+
+    #callButton {
+      position: absolute;
+      top: 80%;
+      left: 50%;
+      margin: -10px 0 0 -10px;
+    }
+
+    .button {
+      position: absolute;
+      width: 70px;
+      top: 50%;
+      left: 50%;
+      margin: -25px 0 0 -60px;
+      background-color: black;
+      border-radius: 4em;
+      font-size: 16px;
+      color: white;
+      padding: 0.8em 1.8em;
+      cursor: pointer;
+      user-select: none;
+      text-align: center;
+      text-decoration: none;
+      cursor: pointer;
+      transition-duration: 0.4s;
+      -webkit-transition-duration: 0.4s;
+      /* Safari */
+    }
+
+    .button:hover {
+      transition-duration: 0.1s;
+      background-color: #3A3A3A;
+    }
+
+    .button:after {
+      content: "";
+      display: block;
+      position: absolute;
+      border-radius: 4em;
+      left: 0;
+      top: 0;
       width: 100%;
       height: 100%;
-      object-fit: cover;
+      opacity: 0;
+      transition: all 0.5s;
+      box-shadow: 0 0 10px 40px white;
+    }
+
+    .button:active:after {
+      box-shadow: 0 0 0 0 white;
+      position: absolute;
+      border-radius: 4em;
+      left: 0;
+      top: 0;
+      opacity: 1;
+      transition: 0s;
+    }
+
+    .button:active {
+      transform: translateY(4px);
+    }
+
+    h1 {
+      font-size: 38px;
+      text-shadow: -1px -1px rgb(0, 0, 0), 1px 1px #060, -3px 0 4px #000;
+      font-family: Arial, Helvetica, sans-serif;
+      color: rgb(29, 15, 224);
+      padding: 16px;
+      font-weight: lighter;
+      -moz-box-shadow: 2px 2px 6px #888;
+      -webkit-box-shadow: 2px 2px 6px #888;
+      box-shadow: 2px 2px 6px #888;
+      text-align: center;
+      display: block;
+      margin: 16px;
+    }
+
+    body {
+      background: #eaafc8;
+      background: -webkit-linear-gradient(to right, #eaafc8, #654ea3);
+      background: linear-gradient(to right, #eaafc8, #654ea3);
+      min-height: 100vh;
     }
   </style>
 </head>
+
 <body>
+  <h1> Group Chat Video Call </h1>
   <div id="video-grid"></div>
+  <br>
+  <a class="button" onclick="history.back()"> End Call </a>
 </body>
+
 </html>
